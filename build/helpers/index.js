@@ -2,7 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.randomSwipe = exports.tap = exports.wait = void 0;
 const wait = (ms) => {
-    console.log('waiting ' + ms.toString() + 'ms');
+    console.log((new Date).toISOString() + ' ' + 'waiting ' + ms.toString() + 'ms');
     return new Promise((resolve) => {
         setTimeout(() => resolve(), ms);
     });
@@ -13,7 +13,7 @@ const tap = (device, x, y) => {
     y = y + Math.floor(Math.random() * 10);
     const command = 'input tap ' + x.toString() + ' ' + y.toString();
     device.shell(command);
-    console.log(command);
+    console.log((new Date).toISOString() + ' ' + command);
 };
 exports.tap = tap;
 const randomSwipe = (device, direction) => {
@@ -47,7 +47,7 @@ const randomSwipe = (device, direction) => {
     }
     const command = 'input swipe ' + fromX.toString() + ' ' + fromY.toString() + ' ' + toX.toString() + ' ' + toY.toString();
     device.shell(command);
-    console.log(command);
+    console.log((new Date).toISOString() + ' ' + command);
 };
 exports.randomSwipe = randomSwipe;
 //# sourceMappingURL=index.js.map

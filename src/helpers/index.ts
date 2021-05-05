@@ -2,7 +2,7 @@ import {DeviceClient} from '@devicefarmer/adbkit';
 import {TDirection} from '../types';
 
 export const wait = (ms: number): Promise<any> => {
-    console.log('waiting ' + ms.toString() + 'ms');
+    console.log((new Date).toISOString() + ' ' + 'waiting ' + ms.toString() + 'ms');
     return new Promise((resolve: any) => {
         setTimeout(() => resolve(), ms);
     });
@@ -15,7 +15,7 @@ export const tap = (device: DeviceClient, x: number, y: number): void => {
     const command = 'input tap ' + x.toString() + ' ' + y.toString();
 
     device.shell(command);
-    console.log(command);
+    console.log((new Date).toISOString() + ' ' + command);
 }
 
 export const randomSwipe = (device: DeviceClient, direction: TDirection): void => {
@@ -49,5 +49,5 @@ export const randomSwipe = (device: DeviceClient, direction: TDirection): void =
     const command = 'input swipe ' + fromX.toString() + ' ' + fromY.toString() + ' ' + toX.toString() + ' ' + toY.toString();
 
     device.shell(command);
-    console.log(command);
+    console.log((new Date).toISOString() + ' ' + command);
 }
