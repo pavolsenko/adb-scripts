@@ -12,13 +12,19 @@ const run = () => {
         console.log((new Date).toISOString() + ' ' + command);
         resolve();
     })
-        .then(() => wait(5000))
-        .then(() => tap(device, 222, 1188))
-        .then(() => wait(3000))
-        .then(() => tap(device, 331, 1761))
-        .then(() => wait(3000))
+        .then(() => wait(Math.random() * 2000 + 4000))
+        .then(() => tap(device, 222, 1188)) // click captcha
+        .then(() => wait(Math.random() * 1000 + 3000))
+        .then(() => tap(device, 331, 1761)) // click confirm
+        .then(() => wait(Math.random() * 1000 + 1000))
+        .then(() => tap(device, 275, 1840))// close extra window
+        .then(() => wait(Math.random() * 1000 + 1000))
+        .then(() => tap(device, 946, 100)) // click tabs
+        .then(() => wait(Math.random() * 1000 + 1000))
+        .then(() => tap(device, 490, 210)) // close tab
+        .then(() => wait(Math.random() * 1000 + 1000))
         .then(() => {
-            const command = 'am force-stop com.android.chrome';
+            const command = 'input keyevent 4';
 
             device.shell(command);
             console.log((new Date).toISOString() + ' ' + command);
